@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv').config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 const app = express();
 app.use(express.json());
@@ -57,6 +57,20 @@ async function run() {
       } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send({ message: 'Error fetching products' });
+      }
+    })
+
+    // Find Single Product By Id
+    app.get('/api/single-product/:id', async (req, res) => {
+      const { id } = req.params;
+      console.log(id); 
+
+      try {
+        const singleProduct = await client.db('dreamershop').collection('products').findOne({ _id: new ObjectId(id) });
+        res.send(singleProduct);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+        res.status(500).send({ message: 'Error fetching product' });
       }
     })
 

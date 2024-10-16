@@ -1,5 +1,7 @@
+import { makeURL } from "../utilities.js";
+const url = makeURL('/api/latest-products');
 // Fetch products from the API
-fetch('http://localhost:3200/api/latest-products')
+fetch(url)
     .then(response => response.json())
     .then(data => {
         productCard(data); // Pass the data to the productCard function
@@ -19,7 +21,7 @@ function productCard(data) {
 
 // Function to create the HTML template for each product
 function htmlTemplate(product) {
-    let { title, img, price, description, category } = product;
+    let { title, img, price, description, category, _id } = product;
 
     if (title.length > 45) {
         title = title.slice(0,45) + '...';
@@ -36,7 +38,7 @@ function htmlTemplate(product) {
                 <p class="product-description">${description}</p>
                 <div class="product-footer">
                     <span class="product-price">${price}</span>
-                    <a href="#" class="product-buy-btn">Buy Now</a>
+                    <a href="../html/productDetails.html?id=${_id}" class="product-buy-btn">Buy Now</a>
                 </div>
             </div>
         </div>
