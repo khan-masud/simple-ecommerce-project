@@ -39,7 +39,7 @@ function htmlTemplate(product) {
                 <p class="product-description">${description}</p>
                 <div class="product-footer">
                     <span class="product-price">${price}</span>
-                    <a href="productDetails.html?id=${_id}" class="product-buy-btn">Buy Now</a>
+                    <a href="productDetails.html?id=${_id}" class="product-buy-btn">View Details</a>
                 </div>
             </div>
         </div>
