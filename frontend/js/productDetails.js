@@ -10,7 +10,7 @@ function loadData() {
 }
 
 const productDetails = (response) => {
-    const { _id, title, price, img, description, category } = response;
+    const { _id, title, price, img, description, category, productID } = response;
      const htmlCode = `
             <div class="product-left">
                 <img src="${img}" alt="rtre">
@@ -20,7 +20,7 @@ const productDetails = (response) => {
                 <p>${description}</p>
                 <p><span class="heading">Category : </span>${category}</p>
                 <p><span class="heading">Price : </span>৳${price}</p>
-                <a href="#"><div class="links">Add to Cart</div></a>
+                <a href="orderForm.html?productID=${productID}"><div class="links">Buy Now</div></a>
             </div>
      `;
 
