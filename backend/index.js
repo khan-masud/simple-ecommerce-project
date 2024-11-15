@@ -74,6 +74,15 @@ async function run() {
       }
     })
 
+    // Order Management
+    app.post('/api/place-order', async(request, response) => {
+      const data = request.body;
+      const allOrder = client.db('dreamershop').collection('orders');
+      const placeOrder = await allOrder.insertOne(data);
+
+      response.send(placeOrder);
+    })
+
     app.listen(process.env.PORT, () => {
       console.log('Server is running');
     });
